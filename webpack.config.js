@@ -3,6 +3,8 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
+
 
 module.exports = {
   entry:  {
@@ -106,7 +108,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
-      chunks: ['app']
+      chunks: ['app', 'assets/js/banner', 'assets/js/tabs', 'assets/js/chart']
     }),
     new HtmlWebpackPlugin({
       template: './src/components/button.html',
@@ -186,6 +188,31 @@ module.exports = {
       chunks: ['app', 'assets/js/chart']
 
     }),
+    
+    new HtmlWebpackPartialsPlugin({
+      path: path.join(__dirname, './src/components/sidebar.html'),
+      location: 'sidebar',
+      template_filename: ['index.html', 'add-user.html', 'add-product.html', 'orders.html', 'products.html', 'users.html']
+    }),
+
+    new HtmlWebpackPartialsPlugin({
+      path: path.join(__dirname, './src/components/help.html'),
+      location: 'help',
+      template_filename: ['index.html', 'add-user.html', 'add-product.html', 'orders.html', 'products.html', 'users.html']
+    }),
+
+    new HtmlWebpackPartialsPlugin({
+      path: path.join(__dirname, './src/components/banner.html'),
+      location: 'banner',
+      template_filename: ['index.html'],
+    }),
+    
+    new HtmlWebpackPartialsPlugin({
+      path: path.join(__dirname, './src/components/chart.html'),
+      location: 'chart',
+      template_filename: ['index.html']
+    }),
+
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new MiniCssExtractPlugin({ filename: 'assets/css/styles.css' }),
   ],
