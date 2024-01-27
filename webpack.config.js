@@ -111,6 +111,38 @@ module.exports = {
       chunks: ['app', 'assets/js/banner', 'assets/js/tabs', 'assets/js/chart']
     }),
     new HtmlWebpackPlugin({
+      template: './src/orders.html',
+      filename: 'orders.html',
+      chunks: ['app', 'assets/js/upload']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/add-product.html',
+      filename: 'add-product.html',
+      chunks: ['app', 'assets/js/upload']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/products.html',
+      filename: 'add-products.html',
+      chunks: ['app', 'assets/js/upload']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/users.html',
+      filename: 'users.html',
+      chunks: ['app', 'assets/js/upload']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/add-user.html',
+      filename: 'add-user.html',
+      chunks: ['app', 'assets/js/upload']
+    }),
+
+
+
+
+
+
+
+    new HtmlWebpackPlugin({
       template: './src/components/button.html',
       filename: 'components/button.html',
       chunks: ['app']
@@ -188,7 +220,11 @@ module.exports = {
       chunks: ['app', 'assets/js/chart']
 
     }),
-    
+    new HtmlWebpackPlugin({ 
+      filename: "products.html",
+      template: "./src/products.html",
+      chunks: ['app']
+    }),
     new HtmlWebpackPartialsPlugin({
       path: path.join(__dirname, './src/components/sidebar.html'),
       location: 'sidebar',
